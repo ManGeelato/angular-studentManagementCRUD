@@ -1,0 +1,68 @@
+{
+  "posts": [
+    {
+      "studentId": 21,
+      "firstName": "mmmm",
+      "lastName": "mmm",
+      "email": "m@gmail.com",
+      "mobileNumber": "0674566356",
+      "fees": "12346",
+      "tutorial": "Hacking",
+      "id": 21
+    },
+    {
+      "studentId": 0,
+      "firstName": "ccc",
+      "lastName": "ccc",
+      "email": "ccc@gmail",
+      "mobileNumber": "54654",
+      "fees": "5465",
+      "tutorial": "FullStack Developer",
+      "id": 24
+    },
+    {
+      "studentId": 0,
+      "firstName": "bbb",
+      "lastName": "bbb",
+      "email": "b@g",
+      "mobileNumber": "76868",
+      "fees": "78",
+      "tutorial": "FullStack Developer",
+      "id": 26
+    },
+    {
+      "studentId": 27,
+      "firstName": "ttt",
+      "lastName": "ttt",
+      "email": "eee@gmail.com",
+      "mobileNumber": "546545454545",
+      "fees": "657546",
+      "tutorial": "Hacking",
+      "id": 27
+    },
+    {
+      "studentId": 28,
+      "firstName": "rrr",
+      "lastName": "rrr",
+      "email": "t@gmail.com",
+      "mobileNumber": 544677653,
+      "fees": "66656",
+      "tutorial": "4",
+      "id": 28
+    },
+    {
+      "studentId": 0,
+      "firstName": "aaa",
+      "lastName": "555",
+      "email": "w@gmail.com",
+      "mobileNumber": "4443344324",
+      "fees": "45353",
+      "tutorial": "FullStack Developer",
+      "id": 29
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

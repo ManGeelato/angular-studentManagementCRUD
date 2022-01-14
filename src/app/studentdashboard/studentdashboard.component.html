@@ -1,0 +1,121 @@
+<nav class="navbar navbar-light bg-primary">
+  <div class="container-fluid">
+    <h1 style="color: rgb(253, 249, 15);">Student Management System</h1>
+    <div class="d-flex flex-row-reverse">
+      <button (click)="onAddStudent()" type="button" data-toggle="modal" data-target="#staticBackdrop" class="p-2 btn btn-success">Add Details</button>
+    </div>
+  </div>
+</nav>
+  <table class="table mt-5">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mobile Number</th>
+        <th scope="col">Fees(Rands)</th>
+        <th scope="col">Tutorial</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let data of allStudents">
+        <td>{{data.id}}</td>
+        <td>{{data.firstName}}</td>
+        <td>{{data.lastName}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.mobileNumber}}</td>
+        <td>{{data.fees}}</td>
+        <td>{{data.tutorial}}</td>
+        <td>
+          <button (click)="onEdit(data)" class="btn btn-primary mx-2" type="button" data-toggle="modal" data-target="#staticBackdrop">Edit</button> &nbsp;
+          <button (click)="deleteStudent(data)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static"
+  data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+   <div class="modal-dialog">
+
+     <div class="modal-content">
+
+       <div class="modal-header">
+         <h5 class="modal-title" id="staticBackdropLabel">Student Details</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+
+       <div class="modal-body">
+        <form [formGroup] = "studentForm" autocomplete="off">
+          
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+            <div>
+              <div class="text-danger" *ngIf="validationForm.firstName.errors?.required">Field required!</div>
+              <div class="text-danger" *ngIf="submitted && validationForm.firstName.errors?.pattern">Name required in correct format!</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name" required>
+            <div>
+              <div class="text-danger" *ngIf="validationForm.lastName.errors?.required">Field required!</div>
+              <div class="text-danger" *ngIf="submitted && validationForm.lastName.errors?.pattern">Name required in correct format!</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="Email address in correct format">
+            <div>
+              <div class="text-danger" *ngIf="validationForm.email.errors?.required">Field required!</div>
+              <div class="text-danger" *ngIf="submitted && validationForm.email.errors?.pattern">Email required in correct format!</div>
+            </div>
+          </div> 
+
+          <div class="form-group">
+            <label for="mobileNumber">Mobile Number</label>
+            <input type="text"  min="0" class="form-control" formControlName="mobileNumber" placeholder="Mobile Number, not more than 10 values">
+            <div>
+              <div class="text-danger" *ngIf="validationForm.mobileNumber.errors?.required">Field required!</div>
+              <div class="text-danger" *ngIf=" submitted && validationForm.mobileNumber.errors?.pattern">Please, Enter 10 digit Mobile Number.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="fees">Fees</label>
+            <input type="text"  min="0" class="form-control" formControlName="fees" placeholder="Student Fees, not more than 5 values">
+            <div>
+              <div class="text-danger" *ngIf="validationForm.fees.errors?.required">Field required!</div>
+              <div class="text-danger" *ngIf=" submitted && validationForm.fees.errors?.pattern">Please, Enter 5 digit value.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="tutorial">Tutorial</label>
+            <select formControlName="tutorial" (change)="selectTutorial($event)" class="form-control" required>
+              <option *ngFor="let tutorial of tutorials" [ngValue] = "tutorial">
+                {{tutorial}}
+              </option>
+              <div *ngIf="submitted && validationForm.tutorial.errors">
+                <div class="text-danger" *ngIf="validationForm.tutorial.errors.required">Field required!</div>
+              </div>
+            </select>
+          </div>
+
+        </form>
+       </div>
+       <div class="modal-footer">
+         <button type="button" id="cancel" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         <button type="button" (click)="postStudentDetails()" *ngIf="showAddOrganization" class="btn btn-primary">Add</button>
+        <button type="button" *ngIf="showUpdateOrganization"(click)="updateStudent()" class="btn btn-primary">Update</button>
+       </div>
+     </div>
+   </div>
+ </div>
